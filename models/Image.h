@@ -10,7 +10,15 @@
 
 class Image {
 public:
+    Image(const std::string &name, const std::string &extension) : name(name), extension(extension) {}
 
+    const std::string getName() const {
+        return name;
+    }
+
+    const std::string getExtension() const {
+        return extension;
+    }
 
 private:
     std::string name;

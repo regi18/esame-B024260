@@ -237,7 +237,19 @@ Carletti_Esame_B024260_BINARY_DIR:STATIC=C:/Programming/C++/Programmazione - Ber
 Carletti_Esame_B024260_SOURCE_DIR:STATIC=C:/Programming/C++/Programmazione - Bertini/Carletti_Esame_B024260
 
 //The directory containing a CMake configuration file for QT.
-QT_DIR:PATH=QT_DIR-NOTFOUND
+QT_DIR:PATH=D:/Software/Qt/5.12.11/mingw73_64/lib/cmake/Qt5
+
+//The directory containing a CMake configuration file for Qt5Core.
+Qt5Core_DIR:PATH=D:/Software/Qt/5.12.11/mingw73_64/lib/cmake/Qt5Core
+
+//The directory containing a CMake configuration file for Qt5Gui.
+Qt5Gui_DIR:PATH=D:/Software/Qt/5.12.11/mingw73_64/lib/cmake/Qt5Gui
+
+//The directory containing a CMake configuration file for Qt5Widgets.
+Qt5Widgets_DIR:PATH=D:/Software/Qt/5.12.11/mingw73_64/lib/cmake/Qt5Widgets
+
+//The directory containing a CMake configuration file for Qt5.
+Qt5_DIR:PATH=D:/Software/Qt/5.12.11/mingw73_64/lib/cmake/Qt5
 
 
 ########################

@@ -11,6 +11,12 @@
 
 class ImagesDatabase : public Subject {
 public:
+    ImagesDatabase() = default;
+    ~ImagesDatabase() = default;
+
+    void addImage(const Image& newImage);
+    void removeImage(std::string name);
+    void getImage(std::string name);
 
 
 private:
