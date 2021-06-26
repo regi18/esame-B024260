@@ -10,12 +10,13 @@
 
 
 class Subject {
+public:
     virtual void subscribe(Observer* observer) {
-        this->observer.push_back(observer);
+        this->observers.push_back(observer);
     }
 
     virtual void unsubscribe(Observer* observer) {
-        this->observer.remove(observer);
+        this->observers.remove(observer);
     }
 
     virtual void notifyAll() {

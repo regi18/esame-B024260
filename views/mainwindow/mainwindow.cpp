@@ -9,3 +9,6 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
+void MainWindow::update() {
+
+}

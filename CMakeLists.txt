@@ -32,7 +32,7 @@ set(PROJECT_SOURCES
         views/mainwindow/mainwindow.cpp
         views/mainwindow/mainwindow.h
         views/mainwindow/mainwindow.ui
-        interfaces/Subject.h interfaces/Observer.h)
+        interfaces/Subject.h interfaces/Observer.h controllers/ImageUploader.cpp controllers/ImageUploader.h models/ImagesDatabase.cpp models/ImagesDatabase.h models/Image.h)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Carletti_Esame_B024260
