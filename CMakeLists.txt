@@ -29,10 +29,10 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-)
+        views/mainwindow/mainwindow.cpp
+        views/mainwindow/mainwindow.h
+        views/mainwindow/mainwindow.ui
+        interfaces/Subject.h interfaces/Observer.h)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Carletti_Esame_B024260

@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>798</width>
-    <height>380</height>
+    <width>795</width>
+    <height>364</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Esame &quot;Laboratorio di Programmazione&quot;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QProgressBar" name="progressBar">
+   <widget class="QProgressBar" name="currentUploadingProgress">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -27,7 +27,7 @@
      <number>24</number>
     </property>
    </widget>
-   <widget class="QProgressBar" name="progressBar_2">
+   <widget class="QProgressBar" name="totalNumberUploadedProgress">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -36,8 +36,17 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>3</number>
+    </property>
     <property name="value">
-     <number>24</number>
+     <number>0</number>
+    </property>
+    <property name="format">
+     <string>%v/%m</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -50,7 +59,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Caricamento corrente</string>
+     <string>Current progress</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -63,10 +72,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Files caricati</string>
+     <string>Total progress</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="uploadFileButton">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -76,7 +85,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Carica files</string>
+     <string>Upload file</string>
     </property>
    </widget>
   </widget>
@@ -85,8 +94,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>798</width>
-     <height>21</height>
+     <width>795</width>
+     <height>20</height>
     </rect>
    </property>
   </widget>
