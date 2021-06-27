@@ -5,8 +5,8 @@
 #include <QString>
 #include <QFileDialog>
 #include <QMessageBox>
-#include <models/ImagesDatabase.h>
-#include <controllers/ImageUploader.h>
+#include "../../models/ImagesDatabase.h"
+#include "../../controllers/ImageUploader.h"
 #include "../../interfaces/Observer.h"
 
 QT_BEGIN_NAMESPACE

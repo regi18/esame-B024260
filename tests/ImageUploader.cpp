@@ -3,7 +3,6 @@
 //
 
 #include <memory>
-#include <iostream>
 #include "gtest/gtest.h"
 #include "../models/ImagesDatabase.h"
 #include "../controllers/ImageUploader.h"

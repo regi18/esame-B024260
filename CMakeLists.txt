@@ -17,9 +17,9 @@ find_package(QT NAMES Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 set(PROJECT_SOURCES
-        views/mainwindow/mainwindow.cpp
-        views/mainwindow/mainwindow.h
-        views/mainwindow/mainwindow.ui
+        views/MainWindow/MainWindow.cpp
+        views/MainWindow/MainWindow.h
+        views/MainWindow/MainWindow.ui
         interfaces/Subject.h interfaces/Observer.h controllers/ImageUploader.cpp controllers/ImageUploader.h models/ImagesDatabase.cpp models/ImagesDatabase.h models/Image.h)
 
 add_executable(Carletti_Esame_B024260 main.cpp)

@@ -1,6 +1,6 @@
 #include <QApplication>
 #include <models/ImagesDatabase.h>
-#include "views/mainwindow/mainwindow.h"
+#include "views/mainwindow/MainWindow.h"
 
 
 int main(int argc, char *argv[]) {
