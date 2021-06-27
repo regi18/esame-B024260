@@ -1,3 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Carletti_Esame_B024260.dir/objects.a
-C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin\ar.exe cr CMakeFiles\Carletti_Esame_B024260.dir/objects.a @CMakeFiles\Carletti_Esame_B024260.dir\objects1.rsp
-C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\Carletti_Esame_B024260.dir/objects.a -Wl,--no-whole-archive  -o Carletti_Esame_B024260.exe -Wl,--out-implib,libCarletti_Esame_B024260.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Carletti_Esame_B024260.dir\linklibs.rsp

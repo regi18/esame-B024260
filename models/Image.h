@@ -6,18 +6,25 @@
 #define CARLETTI_ESAME_B024260_IMAGE_H
 
 #include <string>
+#include <utility>
+#include <ostream>
 
 
 class Image {
 public:
-    Image(const std::string &name, const std::string &extension) : name(name), extension(extension) {}
+    Image(std::string name, std::string extension) : name(std::move(name)), extension(std::move(extension)) {}
 
-    const std::string getName() const {
+    std::string getName() const {
         return name;
     }
 
-    const std::string getExtension() const {
+    std::string getExtension() const {
         return extension;
+    }
+
+    friend std::ostream &operator<<(std::ostream &os, const Image &image) {
+        os << "Image: " << image.name << " (." << image.extension << ")";
+        return os;
     }
 
 private:

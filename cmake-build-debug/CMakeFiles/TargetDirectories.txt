@@ -1,4 +1,0 @@
-C:/Programming/C++/Programmazione - Bertini/Carletti_Esame_B024260/cmake-build-debug/CMakeFiles/Carletti_Esame_B024260.dir
-C:/Programming/C++/Programmazione - Bertini/Carletti_Esame_B024260/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Programming/C++/Programmazione - Bertini/Carletti_Esame_B024260/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/Programming/C++/Programmazione - Bertini/Carletti_Esame_B024260/cmake-build-debug/CMakeFiles/Carletti_Esame_B024260_autogen.dir
