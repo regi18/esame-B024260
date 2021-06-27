@@ -3,14 +3,16 @@
 //
 
 #include "ImagesDatabase.h"
-bool ImagesDatabase::addImage(const Image &newImage) {
+bool ImagesDatabase::addImage(const Image& newImage) {
     // If an image with the same name already exists, exit and return false
     if (this->images.find(newImage.getName()) != this->images.end()) return false;
+    // Maximum number of images reached
+    if (this->getNumberOfImages() == this->getMaxNumberOfImages()) return false;
 
     this->currentUploadingProgress = 0;
-    this->simulateUploadingTime();
+    if (isSimulateSlowerUpload) this->simulateUploadingTime();
 
-    this->images.insert({ newImage.getName(), newImage });
+    this->images.insert({newImage.getName(), newImage});
     this->currentUploadingProgress = 100;
     this->notifyAll();
     return true;

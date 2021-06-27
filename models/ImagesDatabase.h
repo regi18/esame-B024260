@@ -9,7 +9,6 @@
 #include <map>
 #include <chrono>
 #include <thread>
-#include<QDebug>
 #include "../interfaces/Subject.h"
 #include "Image.h"
 
@@ -60,6 +59,9 @@ public:
     int getMaxNumberOfImages() const {
         return maxNumberOfImages;
     }
+    void setIsSimulateSlowerUpload(bool isSimulateSlowerUpload) {
+        ImagesDatabase::isSimulateSlowerUpload = isSimulateSlowerUpload;
+    }
 
 
 private:
@@ -69,6 +71,8 @@ private:
      * will freeze the entire window while in progress.
      */
     void simulateUploadingTime();
+    // If set to false disables the slower uploading time
+    bool isSimulateSlowerUpload = true;
 
     std::map<std::string, Image> images{};
 

@@ -27,9 +27,12 @@ void MainWindow::on_uploadFileButton_pressed() {
     // Disable the button to avoid restarting this process before the current one terminated
     this->ui->uploadFileButton->setDisabled(true);
 
-    // Upload the selected image, if already uploaded show error
-    if (!this->controller->uploadImage(this->getImageWithDialog()))
-        QMessageBox::critical(this, "Error", "Selected image already exists");
+    try {
+        // Upload the selected image, if already uploaded show error
+        if (!this->controller->uploadImage(this->getImageWithDialog()))
+            QMessageBox::critical(this, "Error", "Selected image already exists");
+    }
+    catch (const std::runtime_error& e) {}
 
     // If maximum number of images reached, permanently disable "upload" button
     if (this->db->getMaxNumberOfImages() != this->db->getNumberOfImages())
@@ -41,5 +44,9 @@ void MainWindow::on_uploadFileButton_pressed() {
 Image MainWindow::getImageWithDialog() {
     QString fileName = QFileDialog::getOpenFileName(this, "Select image", nullptr, tr("Images (*.png *.jpg)"));
 
-    return Image(fileName.toStdString(), this->controller->getFileExtension(fileName.toStdString()));
+    // Check if an image was actually selected from the dialog
+    if (!fileName.isNull())
+        return Image(fileName.toStdString(), this->controller->getFileExtension(fileName.toStdString()));
+    else
+        throw std::runtime_error("No image selected");
 }
