@@ -53,5 +53,3 @@ TEST(ImagesDatabase, GetImage) {
 
     EXPECT_THROW(db.getImage("nonExistingName"), std::out_of_range);
 }
-
-
