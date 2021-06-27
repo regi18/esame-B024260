@@ -22,7 +22,7 @@ public:
         return extension;
     }
 
-    friend std::ostream &operator<<(std::ostream &os, const Image &image) {
+    friend std::ostream& operator<<(std::ostream& os, const Image& image) {
         os << "Image: " << image.name << " (." << image.extension << ")";
         return os;
     }

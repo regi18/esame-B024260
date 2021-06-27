@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 
 project(Carletti_Esame_B024260 VERSION 0.1 LANGUAGES CXX)
 
+add_subdirectory(tests)
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_AUTOUIC ON)

@@ -14,6 +14,9 @@
 #include "Image.h"
 
 
+/**
+ * A database of images
+ */
 class ImagesDatabase : public Subject {
 public:
     explicit ImagesDatabase(int maxNumberOfImages) : maxNumberOfImages(maxNumberOfImages) {};
@@ -60,9 +63,15 @@ public:
 
 
 private:
+    /**
+     * Simulates an image upload by sleeping for some time.
+     * N.B. Since this program is not multi-threaded this simulation
+     * will freeze the entire window while in progress.
+     */
     void simulateUploadingTime();
 
     std::map<std::string, Image> images{};
+
     int currentUploadingProgress{0};
     int maxNumberOfImages;
 };

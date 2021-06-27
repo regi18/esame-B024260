@@ -15,7 +15,7 @@ QT_END_NAMESPACE
 
 
 class MainWindow : public QMainWindow, public Observer {
-    Q_OBJECT
+Q_OBJECT
 
 public:
     explicit MainWindow(ImagesDatabase* db, ImageUploader* controller, QWidget* parent = nullptr);
@@ -27,11 +27,16 @@ private slots:
     void on_uploadFileButton_pressed();
 
 private:
+    /**
+     * Opens an explorer dialog to let the user select an image file
+     *
+     * @return The Image object created from the selected image
+     */
     Image getImageWithDialog();
 
-    Ui::MainWindow *ui;
-    ImagesDatabase* const db;
-    ImageUploader* const controller;
+    Ui::MainWindow* ui;
+    ImagesDatabase* const db;              // The model
+    ImageUploader* const controller;       // The controller
 };
 
 #endif // MAINWINDOW_H

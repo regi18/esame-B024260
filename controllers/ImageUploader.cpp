@@ -8,6 +8,7 @@ bool ImageUploader::uploadImage(const Image &image) {
 }
 
 std::string ImageUploader::getFileExtension(const std::string& fileName) const {
+    // Matches the extension from the filename
     std::smatch match;
     std::regex_search(fileName, match, std::regex("\\.[0-9a-z]+$", std::regex::icase));
 

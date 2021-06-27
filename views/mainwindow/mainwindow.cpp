@@ -17,19 +17,25 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::update() {
+    // Updates the two progress bars
     this->ui->currentUploadingProgress->setValue(this->db->getCurrentUploadingProgress());
     this->ui->totalNumberUploadedProgress->setValue(this->db->getNumberOfImages());
 }
 
 
 void MainWindow::on_uploadFileButton_pressed() {
+    // Disable the button to avoid restarting this process before the current one terminated
     this->ui->uploadFileButton->setDisabled(true);
 
+    // Upload the selected image, if already uploaded show error
     if (!this->controller->uploadImage(this->getImageWithDialog()))
         QMessageBox::critical(this, "Error", "Selected image already exists");
 
+    // If maximum number of images reached, permanently disable "upload" button
     if (this->db->getMaxNumberOfImages() != this->db->getNumberOfImages())
         this->ui->uploadFileButton->setDisabled(false);
+    else
+        QMessageBox::information(this, "Upload finished", "All the needed images have been uploaded");
 }
 
 Image MainWindow::getImageWithDialog() {
