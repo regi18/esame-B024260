@@ -1,5 +1,5 @@
 #include "MainWindow.h"
-#include "./ui_mainwindow.h"
+#include "./ui_MainWindow.h"
 
 
 MainWindow::MainWindow(ImagesDatabase* db, ImageUploader* controller, QWidget* parent) : QMainWindow(parent),
