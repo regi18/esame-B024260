@@ -7,6 +7,9 @@
 
 #include <iostream>
 #include <map>
+#include <chrono>
+#include <thread>
+#include<QDebug>
 #include "../interfaces/Subject.h"
 #include "Image.h"
 
@@ -45,9 +48,19 @@ public:
      */
     void dump() const;
 
+    int getNumberOfImages() const {
+        return this->images.size();
+    }
+    int getCurrentUploadingProgress() const {
+        return currentUploadingProgress;
+    }
+
 
 private:
+    void simulateUploadingTime();
+
     std::map<std::string, Image> images{};
+    int currentUploadingProgress{0};
 };
 
 

@@ -5,8 +5,11 @@
 #include "views/mainwindow/mainwindow.h"
 
 int main(int argc, char *argv[]) {
+    ImagesDatabase db;
+    ImageUploader controller(&db);
+
     QApplication a(argc, argv);
-    MainWindow w;
+    MainWindow w(&db, &controller);
     w.show();
     return QApplication::exec();
 }

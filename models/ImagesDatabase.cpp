@@ -7,12 +7,21 @@ bool ImagesDatabase::addImage(const Image &newImage) {
     // If an image with the same name already exists, exit and return false
     if (this->images.find(newImage.getName()) != this->images.end()) return false;
 
+    this->currentUploadingProgress = 0;
+    this->simulateUploadingTime();
+
     this->images.insert({ newImage.getName(), newImage });
+    this->currentUploadingProgress = 100;
+    this->notifyAll();
     return true;
 }
 
 bool ImagesDatabase::removeImage(const std::string& name) {
-    return this->images.erase(name) == 1;
+    if (this->images.erase(name) == 1) {
+        this->notifyAll();
+        return true;
+    }
+    else return false;
 }
 
 Image& ImagesDatabase::getImage(const std::string& name) {
@@ -28,4 +37,25 @@ void ImagesDatabase::dump() const {
     for (const auto& image : this->images) {
         std::cout << image.second << std::endl;
     }
+}
+
+
+void ImagesDatabase::simulateUploadingTime() {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    this->currentUploadingProgress = 10;
+    this->notifyAll();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(800));
+    this->currentUploadingProgress = 23;
+    this->notifyAll();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(900));
+    this->currentUploadingProgress = 43;
+    this->notifyAll();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(1200));
+    this->currentUploadingProgress = 66;
+    this->notifyAll();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(800));
 }
