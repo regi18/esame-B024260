@@ -13,6 +13,18 @@
     <height>364</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>795</width>
+    <height>364</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>795</width>
+    <height>364</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Esame &quot;Laboratorio di Programmazione&quot;</string>
   </property>
