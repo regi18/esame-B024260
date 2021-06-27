@@ -16,7 +16,7 @@
 
 class ImagesDatabase : public Subject {
 public:
-    ImagesDatabase() = default;
+    explicit ImagesDatabase(int maxNumberOfImages) : maxNumberOfImages(maxNumberOfImages) {};
     ~ImagesDatabase() override = default;
 
     /**
@@ -54,6 +54,9 @@ public:
     int getCurrentUploadingProgress() const {
         return currentUploadingProgress;
     }
+    int getMaxNumberOfImages() const {
+        return maxNumberOfImages;
+    }
 
 
 private:
@@ -61,6 +64,7 @@ private:
 
     std::map<std::string, Image> images{};
     int currentUploadingProgress{0};
+    int maxNumberOfImages;
 };
 
 

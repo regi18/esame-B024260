@@ -6,7 +6,8 @@ MainWindow::MainWindow(ImagesDatabase* db, ImageUploader* controller, QWidget* p
                                                                                          ui(new Ui::MainWindow),
                                                                                          db(db),
                                                                                          controller(controller) {
-    ui->setupUi(this);
+    this->ui->setupUi(this);
+    this->ui->totalNumberUploadedProgress->setMaximum(this->db->getMaxNumberOfImages());
     this->db->subscribe(this);
 }
 
@@ -27,7 +28,8 @@ void MainWindow::on_uploadFileButton_pressed() {
     if (!this->controller->uploadImage(this->getImageWithDialog()))
         QMessageBox::critical(this, "Error", "Selected image already exists");
 
-    this->ui->uploadFileButton->setDisabled(false);
+    if (this->db->getMaxNumberOfImages() != this->db->getNumberOfImages())
+        this->ui->uploadFileButton->setDisabled(false);
 }
 
 Image MainWindow::getImageWithDialog() {
