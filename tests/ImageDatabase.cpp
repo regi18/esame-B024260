@@ -6,26 +6,17 @@
 #include "../models/ImagesDatabase.h"
 
 
-TEST(ImagesDatabase, Constructor) {
-    ImagesDatabase db(7);
-
-    ASSERT_EQ(7, db.getMaxNumberOfImages());
-}
-
 TEST(ImagesDatabase, AddImage) {
-    ImagesDatabase db(3);
-    db.setIsSimulateSlowerUpload(false);
+    ImagesDatabase db;
 
     ASSERT_TRUE(db.addImage({"test", "png"}));
     ASSERT_FALSE(db.addImage({"test", "png"}));       // Insert image with same name
     ASSERT_TRUE(db.addImage({"test2", "png"}));
     ASSERT_TRUE(db.addImage({"test3", "png"}));
-    ASSERT_FALSE(db.addImage({"test4", "png"}));      // Maximum number of images reached
 }
 
 TEST(ImagesDatabase, RemoveImage) {
-    ImagesDatabase db(3);
-    db.setIsSimulateSlowerUpload(false);
+    ImagesDatabase db;
 
     ASSERT_TRUE(db.addImage({"test", "png"}));
     ASSERT_TRUE(db.addImage({"test2", "png"}));
@@ -39,8 +30,7 @@ TEST(ImagesDatabase, RemoveImage) {
 }
 
 TEST(ImagesDatabase, GetImage) {
-    ImagesDatabase db(3);
-    db.setIsSimulateSlowerUpload(false);
+    ImagesDatabase db;
 
     ASSERT_TRUE(db.addImage({"test", "png"}));
     ASSERT_TRUE(db.addImage({"test2", "png"}));

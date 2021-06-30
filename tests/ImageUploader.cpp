@@ -12,8 +12,7 @@ class ImageUploaderSuite : public ::testing::Test {
 
 protected:
     void SetUp() override {
-        this->db = std::unique_ptr<ImagesDatabase>(new ImagesDatabase(3));
-        this->db->setIsSimulateSlowerUpload(false);
+        this->db = std::unique_ptr<ImagesDatabase>(new ImagesDatabase());
         this->controller = std::unique_ptr<ImageUploader>(new ImageUploader(db.get()));
     }
 
@@ -29,10 +28,9 @@ TEST_F(ImageUploaderSuite, GetFileExtension) {
     ASSERT_EQ(this->controller->getFileExtension("hello"), "");
 }
 
-TEST_F(ImageUploaderSuite, UploadImage) {
-    ASSERT_TRUE(this->controller->uploadImage({"test", "jpg"}));
-    ASSERT_FALSE(this->controller->uploadImage({"test", "jpg"}));       // Uploading already existing image
-    ASSERT_TRUE(this->controller->uploadImage({"test2", "jpg"}));
-    ASSERT_TRUE(this->controller->uploadImage({"test3", "jpg"}));
-    ASSERT_FALSE(this->controller->uploadImage({"test4", "jpg"}));      // Uploading in full database
+TEST_F(ImageUploaderSuite, AddImage) {
+    ASSERT_TRUE(this->controller->addImage({"test", "jpg"}));
+    ASSERT_FALSE(this->controller->addImage({"test", "jpg"}));       // Adding already existing image
+    ASSERT_TRUE(this->controller->addImage({"test2", "jpg"}));
+    ASSERT_TRUE(this->controller->addImage({"test3", "jpg"}));
 }
