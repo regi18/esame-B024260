@@ -3,24 +3,17 @@
 //
 
 #include "ImagesDatabase.h"
+
 bool ImagesDatabase::addImage(const Image& newImage) {
     // If an image with the same name already exists, exit and return false
     if (this->images.find(newImage.getName()) != this->images.end()) return false;
-    // Maximum number of images reached
-    if (this->getNumberOfImages() == this->getMaxNumberOfImages()) return false;
-
-    this->currentUploadingProgress = 0;
-    if (isSimulateSlowerUpload) this->simulateUploadingTime();
 
     this->images.insert({newImage.getName(), newImage});
-    this->currentUploadingProgress = 100;
-    this->notifyAll();
     return true;
 }
 
 bool ImagesDatabase::removeImage(const std::string& name) {
     if (this->images.erase(name) == 1) {
-        this->notifyAll();
         return true;
     }
     else return false;
@@ -41,23 +34,39 @@ void ImagesDatabase::dump() const {
     }
 }
 
+void ImagesDatabase::upload() {
+    this->currentNumberOfUploadedImages = 0;
 
-void ImagesDatabase::simulateUploadingTime() {
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    this->currentUploadingProgress = 10;
-    this->notifyAll();
+    // Get the images that still need to be uploaded (i.e. the difference between uploadedImages and images)
+    std::map<std::string, const Image&> imagesToUpload{};
+    std::set_difference(
+            this->images.begin(), this->images.end(),
+            this->uploadedImages.begin(), this->uploadedImages.end(),
+            std::inserter(imagesToUpload, imagesToUpload.end()));
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(800));
-    this->currentUploadingProgress = 23;
-    this->notifyAll();
+    // Upload all images
+    for (const auto& image : imagesToUpload) {
+        this->currentUploadingProgress = 0;
+        this->notifyAll();
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(900));
-    this->currentUploadingProgress = 43;
-    this->notifyAll();
+        // Simulate uploading progress for the current image
+        for (int i = 0; i < static_cast<int>(dist(mt)) % 5 + 5; i++) {
+            // Sleep for a random amount of ms (from 800ms to 1200ms)
+            std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(dist(mt)) + 800));
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(1200));
-    this->currentUploadingProgress = 66;
-    this->notifyAll();
+            // Increment the uploading progress of a random number
+            this->currentUploadingProgress += static_cast<int>(dist(mt)) % 30;
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(800));
+            if (this->currentUploadingProgress > 100) this->currentUploadingProgress = 100;
+            this->notifyAll();
+            if (this->currentUploadingProgress == 100) break;
+        }
+
+        this->uploadedImages.insert(image);
+
+        this->currentUploadingProgress = 100;
+        this->currentNumberOfUploadedImages++;
+        this->notifyAll();
+        std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    }
 }

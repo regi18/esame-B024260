@@ -55,13 +55,13 @@
      <number>0</number>
     </property>
     <property name="maximum">
-     <number>3</number>
+     <number>100</number>
     </property>
     <property name="value">
      <number>0</number>
     </property>
     <property name="format">
-     <string>%v/%m</string>
+     <string>0/0</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -90,17 +90,30 @@
      <string>Total progress</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="uploadFileButton">
+   <widget class="QPushButton" name="addNewFileButton">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>240</y>
+      <x>280</x>
+      <y>210</y>
       <width>251</width>
-      <height>61</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Upload file</string>
+     <string>Select new file(s)</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="uploadFileButton">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>270</y>
+      <width>251</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Upload files</string>
     </property>
    </widget>
   </widget>

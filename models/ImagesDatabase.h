@@ -8,7 +8,9 @@
 #include <iostream>
 #include <map>
 #include <chrono>
+#include <random>
 #include <thread>
+#include <algorithm>
 #include "../interfaces/Subject.h"
 #include "Image.h"
 
@@ -18,11 +20,17 @@
  */
 class ImagesDatabase : public Subject {
 public:
-    explicit ImagesDatabase(int maxNumberOfImages) : maxNumberOfImages(maxNumberOfImages) {};
+    explicit ImagesDatabase() {
+        // Setup the pseudo-random number generator
+        std::random_device rd;
+        this->mt = std::mt19937(rd());
+        this->dist = std::uniform_real_distribution<double>(1.0, 400.0);
+    };
+
     ~ImagesDatabase() override = default;
 
     /**
-     * Adds a new image.
+     * Adds a new image to the upload queue.
      * N.B. Each image has to have a unique name.
      *
      * @param newImage The image to add
@@ -46,38 +54,35 @@ public:
     Image& getImage(const std::string& name);
 
     /**
+     *  Simulates the upload of the images to a remote server
+     */
+     void upload();
+
+    /**
      * Prints the database to console
      */
     void dump() const;
 
-    int getNumberOfImages() const {
-        return this->images.size();
+    int getNumberOfImagesToUpload() const {
+        return this->images.size() - this->uploadedImages.size();
     }
     int getCurrentUploadingProgress() const {
         return currentUploadingProgress;
     }
-    int getMaxNumberOfImages() const {
-        return maxNumberOfImages;
-    }
-    void setIsSimulateSlowerUpload(bool isSimulateSlowerUpload) {
-        ImagesDatabase::isSimulateSlowerUpload = isSimulateSlowerUpload;
+    int getCurrentNumberOfUploadedImages() const {
+        return currentNumberOfUploadedImages;
     }
 
 
 private:
-    /**
-     * Simulates an image upload by sleeping for some time.
-     * N.B. Since this program is not multi-threaded this simulation
-     * will freeze the entire window while in progress.
-     */
-    void simulateUploadingTime();
-    // If set to false disables the slower uploading time
-    bool isSimulateSlowerUpload = true;
-
     std::map<std::string, Image> images{};
+    std::map<std::string, Image> uploadedImages{};
 
     int currentUploadingProgress{0};
-    int maxNumberOfImages;
+    int currentNumberOfUploadedImages{0};
+
+    std::uniform_real_distribution<double> dist;
+    std::mt19937 mt;
 };
 
 

@@ -24,15 +24,15 @@ public:
     void update() override;
 
 private slots:
+    void on_addNewFileButton_pressed();
     void on_uploadFileButton_pressed();
 
 private:
     /**
-     * Opens an explorer dialog to let the user select an image file
-     *
-     * @return The Image object created from the selected image
+     * Opens an explorer dialog to let the user select one or more images
+     * to upload
      */
-    Image getImageWithDialog();
+    void addImagesWithDialog();
 
     Ui::MainWindow* ui;
     ImagesDatabase* const db;              // The model

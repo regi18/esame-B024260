@@ -3,8 +3,12 @@
 //
 
 #include "ImageUploader.h"
-bool ImageUploader::uploadImage(const Image& image) {
+bool ImageUploader::addImage(const Image& image) {
     return this->db->addImage(image);
+}
+
+void ImageUploader::uploadImages() {
+    this->db->upload();
 }
 
 std::string ImageUploader::getFileExtension(const std::string& fileName) const {

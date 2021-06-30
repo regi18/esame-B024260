@@ -4,7 +4,7 @@
 
 
 int main(int argc, char *argv[]) {
-    ImagesDatabase db(2);
+    ImagesDatabase db;
     ImageUploader controller(&db);
 
     QApplication a(argc, argv);

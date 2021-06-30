@@ -27,6 +27,12 @@ public:
         return os;
     }
 
+    // Needed for std::set_difference
+    bool operator<(const Image& rhs) const {
+        return name < rhs.name;
+    }
+
+
 private:
     std::string name;
     std::string extension;

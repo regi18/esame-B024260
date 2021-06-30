@@ -21,12 +21,16 @@ public:
      */
     std::string getFileExtension(const std::string& fileName) const;
     /**
-     * Uploads the given image to the database
+     * Adds the given image to the database
      *
      * @param image The image to upload
      * @return true if the image was successfully uploaded, false otherwise
      */
-    bool uploadImage(const Image& image);
+    bool addImage(const Image& image);
+    /**
+     * Uploads all the selected images to the remote server
+     */
+    void uploadImages();
 
 private:
     ImagesDatabase* const db;
